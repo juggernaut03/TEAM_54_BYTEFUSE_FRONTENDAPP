@@ -20,6 +20,8 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Location from 'expo-location';
 import axios from 'axios';
+import IncidentReportScreen from '../screens/IncidentReportScreen';
+
 
 const API_BASE_URL = 'https://womensafety-1-5znp.onrender.com';
 
@@ -49,6 +51,9 @@ const HomeScreen = () => {
     navigation.navigate('FakeCall');
   };
 
+  const handleReportIncident = () => {
+    navigation.navigate('IncidentReport');
+  };
   const fetchUserProfile = async () => {
     try {
       setLoading(true);
@@ -280,7 +285,9 @@ const HomeScreen = () => {
       <Feather name="chevron-right" size={24} color="#666" />
     </TouchableOpacity>
   );
-
+  const handleWomenEmpowermentPress = () => {
+    navigation.navigate('WomenEmpowerment');
+  };
   // Get user's first name or default to "there"
   const getUserFirstName = () => {
     if (userProfile && userProfile.name) {
@@ -356,6 +363,7 @@ const HomeScreen = () => {
     <MaterialIcons name="phone" size={24} color="#FFB5D8" />
     <Text style={styles.actionText}>Fake call</Text>
   </TouchableOpacity>
+  
   <TouchableOpacity 
     style={styles.actionCard}
     onPress={handleShareLocation}
@@ -379,7 +387,7 @@ const HomeScreen = () => {
             <Ionicons name="people" size={16} color="white" />
           </TouchableOpacity>
         </View>
-
+   
         {/* Journey Card */}
         <TouchableOpacity 
           style={styles.journeyCard}
@@ -396,10 +404,43 @@ const HomeScreen = () => {
           </View>
           <Feather name="chevron-right" size={24} color="#666" />
         </TouchableOpacity>
-        
+          {/* Incident Report Card */}
+<TouchableOpacity 
+  style={styles.journeyCard}
+  onPress={handleReportIncident}
+>
+  <View style={styles.journeyContent}>
+    <Ionicons name="document-text-outline" size={24} color="#FFB5D8" />
+    <View style={styles.journeyText}>
+      <Text style={styles.journeyTitle}>Report Incident</Text>
+      <Text style={styles.journeySubtitle}>
+        File a detailed report about any safety incidents you've experienced.
+      </Text>
+    </View>
+  </View>
+  <Feather name="chevron-right" size={24} color="#666" />
+</TouchableOpacity>
+
+
         {/* Community Card - NEW */}
         {renderCommunityCard()}
-
+        const renderWomenEmpowermentCard = () (
+     <TouchableOpacity 
+       style={[styles.journeyCard, styles.empowermentCard]}
+       onPress={handleWomenEmpowermentPress}
+     >
+       <View style={styles.journeyContent}>
+         <MaterialIcons name="emoji-people" size={24} color="#FFB5D8" />
+         <View style={styles.journeyText}>
+           <Text style={styles.journeyTitle}>Empowerment</Text>
+           <Text style={styles.journeySubtitle}>
+             Access skill development courses, financial tools, and resources for personal growth.
+           </Text>
+         </View>
+       </View>
+       <Feather name="chevron-right" size={24} color="#666" />
+     </TouchableOpacity>
+   );
         {/* Emergency Buttons */}
         <TouchableOpacity 
           style={styles.emergencyButton}

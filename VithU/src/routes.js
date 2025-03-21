@@ -26,6 +26,9 @@ import SkillDevelopmentScreen from './screens/SkillDevelopmentScreen';
 import FakeCallScreen from './screens/FakeCallScreen';
 import MentalHealthChat from './screens/MentalHealthScreen';
 import SOSScreen from './screens/SOSScreen';
+import IncidentReportScreen from './screens/IncidentReportScreen';
+import ReportsHistoryScreen from './screens/ReportsHistoryScreen';
+import ReportDetailScreen from './screens/ReportDetailScreen'
 
 const Stack = createStackNavigator();
 
@@ -66,8 +69,13 @@ export const Routes = () => {
       <Stack.Screen name="LearningPath" component={LearningPathScreen} />
       <Stack.Screen name="MentatlHealthAIChat"  component={MentalHealthChat} />
       <Stack.Screen name="SOS"  component={SOSScreen} />
+      <Stack.Screen name="IncidentReport" component={IncidentReportScreen} />
+      <Stack.Screen name="ReportHistory" component={ReportsHistoryScreen} />
+      <Stack.Screen name="ReportDetail" component={ReportDetailScreen} />
 
 
+      
+      
     </Stack.Navigator>
   );
 };
